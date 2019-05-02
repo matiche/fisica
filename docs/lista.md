@@ -26,3 +26,4 @@ Formato de ingreso colaboradores: - Nombre Apellido1 Apellido2 (@Nombre-de-usuar
 22. Michaol Thomas Moore Retamal (@atonx98)
 23. Dennis Queirolo (@dennis-queirolo )
 24. Mario Labbé (LsMario1998)
+25. Nicolás Fernández (@matiche)
