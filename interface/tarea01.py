@@ -202,7 +202,6 @@ def Curva_de_Arquitas():
         Cristobal Moreira (@cmoreirab)
         Gabriel Lara      (@Gabolara453)
         Dennis Queirolo   (@dennis-queirolo)
-
         :return: Curva de arquitas
         """
 
