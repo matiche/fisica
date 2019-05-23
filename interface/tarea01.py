@@ -78,7 +78,7 @@ def helice_conica():
     y = a * (e**(np.sin(45) * (1/np.tan(30)*theta)))* np.sin(theta)
     z = a * (e**(np.sin(45) * (1/np.tan(30)*theta))) * (1/np.tan(45))
 
-    ax.plot(x, y, z, label='parametric curve')
+    ax.plot(x, y, z, label='helice cónica')
     ax.legend()
 
     plt.show()
