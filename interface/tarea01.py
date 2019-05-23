@@ -69,7 +69,7 @@ def helice_conica():
     ax = fig.gca(projection='3d')
 
     # Prepare arrays x, y, z
-    theta = np.linspace(-6 * np.pi, 6 * np.pi, 100)
+    theta = np.linspace(-6 * np.pi, 6 * np.pi, 1000)
     print (np.cos((np.pi*30)/180))
 
     e = 2.718281
