@@ -193,8 +193,6 @@ def conica_de_papus():
 
     pass
 def Curva_de_Arquitas():
-    # -*-coding: utf-8 -*-
-
     """""
         Tipo de curva: Curva de Arquitas
 
