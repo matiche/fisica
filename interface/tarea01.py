@@ -6,6 +6,8 @@ from matplotlib.backend_bases import key_press_handler
 from matplotlib.figure import Figure
 import numpy as np
 import matplotlib.pyplot as plt
+import mpl_toolkits.mplot3d.axes3d as p3
+import matplotlib.animation as ani
 from mpl_toolkits.mplot3d import Axes3D
 
 def curva_de_ejemplo():
@@ -178,7 +180,7 @@ def hipopoda_1():
            return: plot Curve (Hipopede)
            '''
 
-    plt.rcParams['legend.fontsize'] = 12
+    """plt.rcParams['legend.fontsize'] = 12
     fig = plt.figure()
     ax = fig.gca(projection='3d')
     # Prepare arrays x, y, z
@@ -188,10 +190,42 @@ def hipopoda_1():
     x = a + (r - a) * np.cos(theta)
     y = (r - a) * np.sin(theta)
     z = 2 * (a * (r - a)) ** (1 / 2) * np.sin(theta / 2)
-    ax.plot(x, y, z, label='Hipopede de Eudoxo')
+    curva,= ax.plot(x, y, z,label='Hipopede de Eudoxo')
 
+    def update(num, x, y, curva):
+        line.set_data(x[:num], y[:num])
+        line.axes.axis([0, 10, 0, 1])
+        return curva,
     ax.legend()
+"""
+    fig = plt.figure()
+    ax = p3.Axes3D(fig)
 
+    def gen(n):
+        for theta in np.linspace(0, 4 * np.pi, 99):
+            yield np.array([5 + (20 - 5) * np.cos(theta), (20 - 5) * np.sin(theta),
+                            2 * (5 * (20 - 5)) ** (1 / 2) * np.sin(theta / 2)])
+
+    def update(num, data, line):
+        line.set_data(data[:2, :num])
+        line.set_3d_properties(data[2, :num])
+
+    N = 100
+    data = np.array(list(gen(N))).T
+    line, = ax.plot(data[0, 0:1], data[1, 0:1], data[2, 0:1])
+
+    # Setting the axes properties
+    ax.set_xlim3d([-20.0, 20.0])
+    ax.set_xlabel('X')
+
+    ax.set_ylim3d([-20.0, 20.0])
+    ax.set_ylabel('Y')
+
+    ax.set_zlim3d([-20.0, 20.0])
+    ax.set_zlabel('Z')
+
+    anim = ani.FuncAnimation(fig, update, N, fargs=(data, line), interval=10000 / N, blit=False,repeat=False)
+    # ani.save('matplot003.gif
     plt.show()
     pass
 def conica_de_papus():
