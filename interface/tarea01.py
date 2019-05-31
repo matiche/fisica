@@ -262,8 +262,28 @@ def Curva_de_Arquitas():
 
 
 def horoptera():
-    # añadir sus códigos aca
+    """ Funcion que entrega una Curva Horoptera
+        Integrantes:
+        Dennys Moraga(@tiodona)
+        Isai Morales (@tioisai)
+        Cristopher Moreno (@Anon0101001)
+        Jose Martinez (@JoseIMG)
+    :return Curva Horoptera:
+    """
+    plt.rcParams['legend.fontsize'] = 10
+    fig = plt.figure()
+    ax = fig.gca(projection='3d')
+    # Prepare arrays x, y, z
+    r = 6   #corresponde al radio
+    c = 1   #es una constante
+    t = np.linspace(-5*np.pi,5*np.pi, 300)
+    x = 2 * r / (1 + ((c ** 2) * (t ** 2)))
+    y = 2 * r * c * t / (1 + ((c ** 2) * (t ** 2)))
+    z = t
+    ax.plot(x, y, z, label=('Horoptera'))
+    plt.show()
     pass
+
 def Curva_Bicilindrica():
     # añadir sus códigos aca
     pass
