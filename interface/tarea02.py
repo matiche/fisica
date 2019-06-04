@@ -38,3 +38,5 @@ if __name__ == '__main__':
     # Añadir titulo
     label = tk.Label(frame, text="Curvas Paramétricas Famosas", height="2")
     label.pack(fill=tk.X, expand=1)
+
+    tk.mainloop()
