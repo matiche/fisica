@@ -53,4 +53,7 @@ fabric.properties
 # Editor-based Rest Client
 .idea/httpRequests
 
+*.pc
+*.pyc
+*.pyo
 __pycache__
