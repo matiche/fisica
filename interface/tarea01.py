@@ -343,6 +343,9 @@ if __name__ == '__main__':
 
     curva_de_ejemplo = tk.Button(master=frame, text="Hélice Cónica", command=helice_conica)
     curva_de_ejemplo.pack(side=tk.BOTTOM, padx=10, pady=10)
+    Conica_im = tk.PhotoImage(file="helice_conica.gif")
+    conica_button = tk.Button(master=frame, text="Hélice Cónica", command=helice_conica, image=Conica_im)
+    conica_button.pack(side=tk.BOTTOM, padx=10, pady=10)
 
     curva_de_ejemplo = tk.Button(master=frame, text="Hélice Circular", command=helice_circular_1)
     curva_de_ejemplo.pack(side=tk.BOTTOM, padx=10, pady=10)
