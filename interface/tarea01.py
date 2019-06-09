@@ -10,6 +10,10 @@ import mpl_toolkits.mplot3d.axes3d as p3
 import matplotlib.animation as ani
 from mpl_toolkits.mplot3d import Axes3D
 
+def hipopede():
+
+    pass
+
 def curva_de_ejemplo():
     """
     Curva de Ejemplo que despliega una curva paramétrica en una ventana nueva
@@ -296,10 +300,62 @@ def Curva_de_Arquitas():
 
 
 def horoptera():
-    # añadir sus códigos aca
+    """ Funcion que entrega una Curva Horoptera
+        Integrantes:
+        Dennys Moraga(@tiodona)
+        Isai Morales (@tioisai)
+        Cristopher Moreno (@Anon0101001)
+        Jose Martinez (@JoseIMG)
+    :return Curva Horoptera:
+    """
+    plt.rcParams['legend.fontsize'] = 10
+    fig = plt.figure()
+    ax = fig.gca(projection='3d')
+    # Prepare arrays x, y, z
+    r = 6   #corresponde al radio
+    c = 1   #es una constante
+    t = np.linspace(-5*np.pi,5*np.pi, 300)
+    x = 2 * r / (1 + ((c ** 2) * (t ** 2)))
+    y = 2 * r * c * t / (1 + ((c ** 2) * (t ** 2)))
+    z = t
+    ax.plot(x, y, z, label=('Horoptera'))
+    plt.show()
     pass
+
 def Curva_Bicilindrica():
-    # añadir sus códigos aca
+    """
+    Tipo de curva: Curva bicilindrica
+    Integrantes:
+
+    Nicolas Pavez Henriquez    (@nicoopavez)
+    Fracisco Gonzales Vidal    (@panchoska8)
+    Greis Quezada              (@matakuri)
+    Pedro Robles Fuentes       (PedroRobles)
+
+
+    :return: Curva bicilindrica
+    """
+
+    plt.rcParams['legend.fontsize'] = 12
+
+    fig = plt.figure()
+    ax = fig.gca(projection='3d')
+
+    # Prepare arrays x, y, z
+    a = 1
+    c = 1
+    b = 1
+    t = np.linspace(-4 * np.pi, 4 * np.pi, 99)
+
+    z = c + a * np.sin(t)
+
+    x = a * np.cos(t)
+    y = np.sqrt(-(b ** 2 - (2 * c + a * (np.sin(t)) ** 2)))
+    ax.plot(x, y, z, label='Curva Bicilindrica')
+    ax.legend()
+
+    plt.show()
+
     pass
 
 if __name__ == '__main__':
@@ -344,6 +400,9 @@ if __name__ == '__main__':
     curva_de_ejemplo.pack(side=tk.BOTTOM, padx=10, pady=10)
 
     curva_de_ejemplo = tk.Button(master=frame, text="Horoptera", command=horoptera)
+    curva_de_ejemplo.pack(side=tk.BOTTOM, padx=10, pady=10)
+
+    curva_de_ejemplo = tk.Button(master=frame, text="Hipopedde", command=hipopede)
     curva_de_ejemplo.pack(side=tk.BOTTOM, padx=10, pady=10)
 
     tk.mainloop()
