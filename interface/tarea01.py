@@ -6,8 +6,6 @@ from matplotlib.backend_bases import key_press_handler
 from matplotlib.figure import Figure
 import numpy as np
 import matplotlib.pyplot as plt
-import mpl_toolkits.mplot3d.axes3d as p3
-import matplotlib.animation as ani
 from mpl_toolkits.mplot3d import Axes3D
 
 def hipopede():
@@ -17,7 +15,6 @@ def hipopede():
 def curva_de_ejemplo():
     """
     Curva de Ejemplo que despliega una curva paramétrica en una ventana nueva
-
     Integrantes:
     - Omar Olivares Urrutia (@ofou)
     :return: plot curve
@@ -59,7 +56,6 @@ def helice_conica():
     # añadir sus códigos aca
     """
         Curva de Ejemplo que despliega una Helice Cónica
-
         Integrantes:
         - Mario Labbé (@LsMario1998)
         - Mario González (@tatameister)
@@ -92,7 +88,6 @@ def helice_conica():
 def helice_circular_1():
     """
     Curva que depliega una una helice circular en una ventana nueva
-
     Integrantes:
     - Felipe Lopez Vergara (@felipelopez00)
     - Bastian Bustamante Moraga (@BastianBustamante)
@@ -123,7 +118,6 @@ def helice_circular_1():
     pass
 def Corona_Sinusoidal():
     '''    INTEGRANTES GRUPO:
-
           _Luis Soto Zelada (@Luiss23)
           _Diego Rojas (@diegoskky)
           _Lucia Vilches (@luciavj)
@@ -141,13 +135,11 @@ def Corona_Sinusoidal():
 def curva_de_viviani():
     """
     Funcion que muestra una curva de viviani en una nueva ventana
-
     Integrantes:
     Levi Urbina
     Natalia Valenzuela
     Ricardo Vergara
     Estefany Alarcon
-
     return: curva_de_viviani
     """
 
@@ -172,7 +164,6 @@ def hipopoda_1():
            - Pablo Barrera Whiteley (@Pablobw)
            - José Flores Cáceres (@JoseFlores9)
            - Cristobal Rojas Saavedra (@cristotix)
-
            Función hipopoda_1: Grafica la hipopoda
            Utiliza la forma paramétrica de la función
            x= a+(r-a)*cos(t)
@@ -184,7 +175,7 @@ def hipopoda_1():
            return: plot Curve (Hipopede)
            '''
 
-    """plt.rcParams['legend.fontsize'] = 12
+    plt.rcParams['legend.fontsize'] = 12
     fig = plt.figure()
     ax = fig.gca(projection='3d')
     # Prepare arrays x, y, z
@@ -194,48 +185,15 @@ def hipopoda_1():
     x = a + (r - a) * np.cos(theta)
     y = (r - a) * np.sin(theta)
     z = 2 * (a * (r - a)) ** (1 / 2) * np.sin(theta / 2)
-    curva,= ax.plot(x, y, z,label='Hipopede de Eudoxo')
+    ax.plot(x, y, z, label='Hipopede de Eudoxo')
 
-    def update(num, x, y, curva):
-        line.set_data(x[:num], y[:num])
-        line.axes.axis([0, 10, 0, 1])
-        return curva,
     ax.legend()
-"""
-    fig = plt.figure()
-    ax = p3.Axes3D(fig)
 
-    def gen(n):
-        for theta in np.linspace(0, 4 * np.pi, 99):
-            yield np.array([5 + (20 - 5) * np.cos(theta), (20 - 5) * np.sin(theta),
-                            2 * (5 * (20 - 5)) ** (1 / 2) * np.sin(theta / 2)])
-
-    def update(num, data, line):
-        line.set_data(data[:2, :num])
-        line.set_3d_properties(data[2, :num])
-
-    N = 100
-    data = np.array(list(gen(N))).T
-    line, = ax.plot(data[0, 0:1], data[1, 0:1], data[2, 0:1])
-
-    # Setting the axes properties
-    ax.set_xlim3d([-20.0, 20.0])
-    ax.set_xlabel('X')
-
-    ax.set_ylim3d([-20.0, 20.0])
-    ax.set_ylabel('Y')
-
-    ax.set_zlim3d([-20.0, 20.0])
-    ax.set_zlabel('Z')
-
-    anim = ani.FuncAnimation(fig, update, N, fargs=(data, line), interval=10000 / N, blit=False,repeat=False)
-    # ani.save('matplot003.gif
     plt.show()
     pass
 def conica_de_papus():
     """
         Curva que entrega una conica de papus en la interfaz grafica
-
         Integrantes:
         - José Fabián Ignacio González Encina (@GoldenFenix)
         - Cristian Eduardo Castillo (@criseduardjjd)
@@ -269,7 +227,6 @@ def conica_de_papus():
 def Curva_de_Arquitas():
     """""
         Tipo de curva: Curva de Arquitas
-
         Integrantes:
         Nicolas Fernandez (@matiche)
         Sebastian Mendez  (@SebaMendez)
@@ -326,13 +283,10 @@ def Curva_Bicilindrica():
     """
     Tipo de curva: Curva bicilindrica
     Integrantes:
-
     Nicolas Pavez Henriquez    (@nicoopavez)
     Fracisco Gonzales Vidal    (@panchoska8)
     Greis Quezada              (@matakuri)
     Pedro Robles Fuentes       (PedroRobles)
-
-
     :return: Curva bicilindrica
     """
 
@@ -405,4 +359,4 @@ if __name__ == '__main__':
     curva_de_ejemplo = tk.Button(master=frame, text="Hipopedde", command=hipopede)
     curva_de_ejemplo.pack(side=tk.BOTTOM, padx=10, pady=10)
 
-    tk.mainloop()
+tk.mainloop()
