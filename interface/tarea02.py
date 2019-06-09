@@ -22,7 +22,7 @@ def Hipopoda():
     fig = plt.figure()
     ax = p3.Axes3D(fig)
 
-    def gen(n):
+    def gen():
         for theta in np.linspace(0, 4 * np.pi, 99):
             yield np.array([20 + (50 - 20) * np.cos(theta), (50 - 20) * np.sin(theta),
                             2 * (5 * (50 - 20)) ** (1 / 2) * np.sin(theta / 2)])
@@ -32,7 +32,7 @@ def Hipopoda():
 
     N = 100
     plt.rcParams['legend.fontsize'] = 12
-    data = np.array(list(gen(N))).T
+    data = np.array(list(gen())).T
     line, = ax.plot(data[0, 0:1], data[1, 0:1], data[2, 0:1],label='Hipopede de Eudoxo')
 
     ax.set_xlim3d([-50.0, 50.0])
