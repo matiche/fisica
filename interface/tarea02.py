@@ -1,22 +1,9 @@
 import tkinter as tk
-from matplotlib.backends.backend_tkagg import (
-    FigureCanvasTkAgg, NavigationToolbar2Tk)
-from matplotlib.backend_bases import key_press_handler
-from matplotlib.figure import Figure
-import numpy as np
-import mpl_toolkits.mplot3d.axes3d as p3
-import matplotlib.pyplot as plt
-
-import mpl_toolkits.mplot3d.axes3d as p3
 import matplotlib.animation as ani
-from mpl_toolkits.mplot3d import Axes3D
-
-from matplotlib import animation
-from mpl_toolkits.mplot3d import Axes3D
-from matplotlib import pyplot as plt
-import numpy as np
 import mpl_toolkits.mplot3d.axes3d as p3
+import numpy as np
 from matplotlib import animation
+from matplotlib import pyplot as plt
 
 
 # Hélice Conica
@@ -112,43 +99,49 @@ def helice_circular_1():
     plt.show()
 
     pass
+
+
 # Corona Sinusoidal
 
 # Curva de Viviani
 def anima(num, ejes, linea):
     linea.set_data(ejes[:2, :num])
     linea.set_3d_properties(ejes[2, :num])
+
+
 def curva_de_viviani():
     # Creamos una figura
     fig = plt.figure()
     # Establecemos que es una figura de tipo 3D
-    grafico = fig.gca( projection='3d')
+    grafico = fig.gca(projection='3d')
     # Titulo del grafico
     grafico.set_title("Curva Viviani")
     # limites del grafico
-    grafico.set_xlim3d([-1.0, 2.0]) # el eje x entre 0 y 2 (se uso corchete por la cantidad de datos)
-    grafico.set_xlabel('X') # lo que se esta escrito en el eje x
-    grafico.set_ylim3d([-1.0, 2.0]) # el eje y entre -1 y 2 (se uso corchete por la cantidad de datos)
-    grafico.set_ylabel('Y') # lo que se esta escrito en el eje y
-    grafico.set_zlim3d([-2.0, 2.0]) # el eje z entre -2 y 2 (se uso corchete por la cantidad de datos)
-    grafico.set_zlabel('Z') # lo que se esta escrito en el eje z
+    grafico.set_xlim3d([-1.0, 2.0])  # el eje x entre 0 y 2 (se uso corchete por la cantidad de datos)
+    grafico.set_xlabel('X')  # lo que se esta escrito en el eje x
+    grafico.set_ylim3d([-1.0, 2.0])  # el eje y entre -1 y 2 (se uso corchete por la cantidad de datos)
+    grafico.set_ylabel('Y')  # lo que se esta escrito en el eje y
+    grafico.set_zlim3d([-2.0, 2.0])  # el eje z entre -2 y 2 (se uso corchete por la cantidad de datos)
+    grafico.set_zlabel('Z')  # lo que se esta escrito en el eje z
     # El valor recuperado
     a = 1
     # Los valores de T
-    t = np.linspace(-4, 4*np.pi,100)
+    t = np.linspace(-4, 4 * np.pi, 100)
     # Ejes
     x = a * (1 + np.cos(t))
     y = a * np.sin(t)
-    z = 2 * a * np.sin(t/2)
-    eje = [x,y,z]
+    z = 2 * a * np.sin(t / 2)
+    eje = [x, y, z]
     # agregamos la lista en un array para dibujar la linea
     ejes = np.array(eje)
 
     linea, = grafico.plot(ejes[0, 0:1], ejes[1, 0:1], ejes[2, 0:1], 'm', label="Curva de Viviani", lw=5)
     # figura,funcion,fargs:(datos,linea dibujada),FPS,ms,blit
-    animacion = animation.FuncAnimation(fig, anima, fargs=(ejes, linea),frames=80, interval = 16, blit=False, repeat=False)
+    animacion = animation.FuncAnimation(fig, anima, fargs=(ejes, linea), frames=80, interval=16, blit=False,
+                                        repeat=False)
     # mostrar el grafico
     plt.show()
+
 
 # Hipopoda
 def Hipopoda():
@@ -159,6 +152,7 @@ def Hipopoda():
         for theta in np.linspace(0, 4 * np.pi, 99):
             yield np.array([20 + (50 - 20) * np.cos(theta), (50 - 20) * np.sin(theta),
                             2 * (5 * (50 - 20)) ** (1 / 2) * np.sin(theta / 2)])
+
     def update(num, data, line):
         line.set_data(data[:2, :num])
         line.set_3d_properties(data[2, :num])
@@ -166,7 +160,7 @@ def Hipopoda():
     N = 100
     plt.rcParams['legend.fontsize'] = 12
     data = np.array(list(gen())).T
-    line, = ax.plot(data[0, 0:1], data[1, 0:1], data[2, 0:1],label='Hipopede de Eudoxo')
+    line, = ax.plot(data[0, 0:1], data[1, 0:1], data[2, 0:1], label='Hipopede de Eudoxo')
 
     ax.set_xlim3d([-50.0, 50.0])
     ax.set_xlabel('X')
@@ -176,10 +170,11 @@ def Hipopoda():
 
     ax.set_zlim3d([-50.0, 50.0])
     ax.set_zlabel('Z')
-    anim = ani.FuncAnimation(fig, update, N, fargs=(data, line), interval=1700 / N,repeat=False)
+    anim = ani.FuncAnimation(fig, update, N, fargs=(data, line), interval=1700 / N, repeat=False)
     ax.legend()
     plt.show()
     pass
+
 
 # Espiral Cónica de Papus
 def conico_papus():
@@ -217,6 +212,7 @@ def conico_papus():
 
     plt.show()
 
+
 # Curva de Arquitas
 
 # Horóptera
@@ -239,15 +235,16 @@ if __name__ == '__main__':
     hipopoda_button = tk.Button(master=frame, text="Hipopoda", command=Hipopoda, image=hipopoda_im)
     hipopoda_button.pack(side=tk.BOTTOM, padx=10, pady=10)
 
-    imagen_viviani =  tk.PhotoImage(file="Viviani_curve.png")
-    viviani = tk.Button(master=frame,image=imagen_viviani,width=100,height=100,command=curva_de_viviani)
+    imagen_viviani = tk.PhotoImage(file="Viviani_curve.png")
+    viviani = tk.Button(master=frame, image=imagen_viviani, width=100, height=100, command=curva_de_viviani)
     viviani.pack()
     Conica_im = tk.PhotoImage(file="helice_conica.gif")
     conica_button = tk.Button(master=frame, text="Hélice Cónica", command=helice_conica, image=Conica_im)
     conica_button.pack(side=tk.BOTTOM, padx=10, pady=10)
 
-    helice_circular_im=tk.PhotoImage(file="helice_circular1.gif")
-    helice_circular_button=tk.Button(master=frame, text="helice circular", command=helice_circular_1, image=helice_circular_im)
+    helice_circular_im = tk.PhotoImage(file="helice_circular1.gif")
+    helice_circular_button = tk.Button(master=frame, text="helice circular", command=helice_circular_1,
+                                       image=helice_circular_im)
     helice_circular_button.pack(side=tk.BOTTOM, padx=10, pady=10)
 
     curva_de_ejemplo = tk.Button(master=frame, text="conica de papus", command=conico_papus)
