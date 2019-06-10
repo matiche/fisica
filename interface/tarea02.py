@@ -9,7 +9,8 @@ import mpl_toolkits.mplot3d.axes3d as p3
 import matplotlib.pyplot as plt
 from matplotlib import animation
 from mpl_toolkits.mplot3d import Axes3D
-
+from matplotlib import animation
+from tkinter import *
 # Hélice Conica
 def helice_conica():
     fig = plt.figure()
@@ -89,6 +90,40 @@ def helice_circular_1():
 # Corona Sinusoidal
 
 # Curva de Viviani
+def anima(num, ejes, linea):
+    linea.set_data(ejes[:2, :num])
+    linea.set_3d_properties(ejes[2, :num])
+def curva_de_viviani():
+    # Creamos una figura
+    fig = plt.figure()
+    # Establecemos que es una figura de tipo 3D
+    grafico = fig.gca( projection='3d')
+    # Titulo del grafico
+    grafico.set_title("Curva Viviani")
+    # limites del grafico
+    grafico.set_xlim3d([-1.0, 2.0]) # el eje x entre 0 y 2 (se uso corchete por la cantidad de datos)
+    grafico.set_xlabel('X') # lo que se esta escrito en el eje x
+    grafico.set_ylim3d([-1.0, 2.0]) # el eje y entre -1 y 2 (se uso corchete por la cantidad de datos)
+    grafico.set_ylabel('Y') # lo que se esta escrito en el eje y
+    grafico.set_zlim3d([-2.0, 2.0]) # el eje z entre -2 y 2 (se uso corchete por la cantidad de datos)
+    grafico.set_zlabel('Z') # lo que se esta escrito en el eje z
+    # El valor recuperado
+    a = 1
+    # Los valores de T
+    t = np.linspace(-4, 4*np.pi,100)
+    # Ejes
+    x = a * (1 + np.cos(t))
+    y = a * np.sin(t)
+    z = 2 * a * np.sin(t/2)
+    eje = [x,y,z]
+    # agregamos la lista en un array para dibujar la linea
+    ejes = np.array(eje)
+
+    linea, = grafico.plot(ejes[0, 0:1], ejes[1, 0:1], ejes[2, 0:1], 'm', label="Curva de Viviani", lw=5)
+    # figura,funcion,fargs:(datos,linea dibujada),FPS,ms,blit
+    animacion = animation.FuncAnimation(fig, anima, fargs=(ejes, linea),frames=80, interval = 16, blit=False, repeat=False)
+    # mostrar el grafico
+    plt.show()
 
 # Hipopoda
 
@@ -113,6 +148,9 @@ if __name__ == '__main__':
     label = tk.Label(frame, text="Curvas Paramétricas Famosas", height="2")
     label.pack(fill=tk.X, expand=1)
 
+    imagen_viviani =  PhotoImage(file="Viviani_curve.png")
+    viviani = Button(master=frame,image=imagen_viviani,width=100,height=100,command=curva_de_viviani)
+    viviani.pack()
     Conica_im = tk.PhotoImage(file="helice_conica.gif")
     conica_button = tk.Button(master=frame, text="Hélice Cónica", command=helice_conica, image=Conica_im)
     conica_button.pack(side=tk.BOTTOM, padx=10, pady=10)
