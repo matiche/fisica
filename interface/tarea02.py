@@ -33,7 +33,9 @@ def helice_circular_1():
     data = np.array(list(gen(N))).T
     line, = ax.plot(data[0, 0:1], data[1, 0:1], data[2, 0:1], label='Curva Helice Circular')
     ax.legend()
+
     # Setting the axes properties
+
     ax.set_xlim3d([-8.0, 8.0])
     ax.set_xlabel('X')
 
@@ -74,7 +76,7 @@ if __name__ == '__main__':
     label.pack(fill=tk.X, expand=1)
 
 
-    helice_circular_im=tk.PhotoImage(file="helice_circular.gif")
+    helice_circular_im=tk.PhotoImage(file="helice_circular1.gif")
     helice_circular_button=tk.Button(master=frame, text="helice circular", command=helice_circular_1, image=helice_circular_im)
     helice_circular_button.pack(side=tk.BOTTOM, padx=10, pady=10)
 
