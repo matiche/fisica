@@ -249,17 +249,19 @@ def Curva_de_Arquitas():
 
     fig = plt.figure()
     ax = fig.gca(projection='3d')
-
+    ab = fig.gca(projection='3d')
     # Prepare arrays x, y, z
-    theta = np.linspace(-10 * np.pi, 10 * np.pi, 100)
+    theta = np.linspace(-1 / 2 * np.pi, 1 / 2 * np.pi, 100)
     a = 4
     t = 10
-    z = a * ((1 - np.cos(theta)) * np.cos(theta)) - (np.pi / 2 <= t <= np.pi / 2)
-    z = - a * ((1 - np.cos(theta)) * np.cos(theta)) - (np.pi / 2 <= t <= np.pi / 2)
+    x1 = a * np.cos(theta) ** 2
+    y1 = a * np.cos(theta) * np.sin(theta)
+    z1 = - a * ((1 - np.cos(theta)) * (np.cos(theta)) ** 1 / 2)
+    z = a * (((1 - np.cos(theta)) * np.cos(theta)) ** 1 / 2)
     x = a * np.cos(theta) ** 2
     y = a * np.cos(theta) * np.sin(theta)
-
-    ax.plot(x, y, z, label=('Curva de Arquitas'))
+    ab.plot(x1, y1, z1)
+    ax.plot(x, y, z, label='Curva de Arquitas')
     ax.legend()
 
     plt.show()
