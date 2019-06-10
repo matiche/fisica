@@ -42,7 +42,7 @@ def helice_circular_1():
     ax.set_ylim3d([-8.0, 8.0])
     ax.set_ylabel('Y')
 
-    ax.set_zlim3d([-0.0, 16.0])
+    ax.set_zlim3d([0.0, 16.0])
     ax.set_zlabel('Z')
     ani = animation.FuncAnimation(fig, update, N, fargs=(data, line), interval=16, blit=False, repeat=False)
     plt.show()
