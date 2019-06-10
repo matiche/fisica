@@ -43,7 +43,7 @@ def Hipopoda():
 
     ax.set_zlim3d([-50.0, 50.0])
     ax.set_zlabel('Z')
-    anim = ani.FuncAnimation(fig, update, N, fargs=(data, line), interval=1700 / N, blit=False,repeat=False)
+    anim = ani.FuncAnimation(fig, update, N, fargs=(data, line), interval=1700 / N,repeat=False)
     ax.legend()
     plt.show()
     pass
