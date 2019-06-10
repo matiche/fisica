@@ -7,6 +7,10 @@ from matplotlib.figure import Figure
 import numpy as np
 import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
+from matplotlib import pyplot as plt
+import numpy as np
+import mpl_toolkits.mplot3d.axes3d as p3
+from matplotlib import animation
 
 # Hélice Conica
 def helice_conica():
@@ -48,6 +52,7 @@ def helice_conica():
     ani = animation.FuncAnimation(fig, update, N, fargs=(data, line), interval=1000 / N, blit=False, repeat=False)
 
     plt.show()
+
 # Hélice Circular
 
 # Corona Sinusoidal
