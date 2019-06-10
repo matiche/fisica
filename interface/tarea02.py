@@ -113,13 +113,12 @@ if __name__ == '__main__':
     label = tk.Label(frame, text="Curvas Paramétricas Famosas", height="2")
     label.pack(fill=tk.X, expand=1)
 
+    Conica_im = tk.PhotoImage(file="helice_conica.gif")
+    conica_button = tk.Button(master=frame, text="Hélice Cónica", command=helice_conica, image=Conica_im)
+    conica_button.pack(side=tk.BOTTOM, padx=10, pady=10)
 
     helice_circular_im=tk.PhotoImage(file="helice_circular1.gif")
     helice_circular_button=tk.Button(master=frame, text="helice circular", command=helice_circular_1, image=helice_circular_im)
     helice_circular_button.pack(side=tk.BOTTOM, padx=10, pady=10)
-
-    Conica_im = tk.PhotoImage(file="helice_conica.gif")
-    conica_button = tk.Button(master=frame, text="Hélice Cónica", command=helice_conica, image=Conica_im)
-    conica_button.pack(side=tk.BOTTOM, padx=10, pady=10)
 
     tk.mainloop()
